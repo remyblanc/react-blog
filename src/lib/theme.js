@@ -5,25 +5,32 @@ export const theme = {
     green: '#00ff00'
   },
   fonts: {
-    TitilliumWebThin: `
-      font-family: TitilliumWeb;
-      font-weight: 100;
-    `,
-    TitilliumWebLight: `
-      font-family: TitilliumWeb;
+    CirceLight: `
+      font-family: Circe;
       font-weight: 300;
     `,
-    TitilliumWebRegular: `
-      font-family: TitilliumWeb;
+    CirceRegular: `
+      font-family: Circe;
       font-weight: 400;
     `,
-    TitilliumWebBold: `
-      font-family: TitilliumWeb;
+    CirceBold: `
+      font-family: Circe;
       font-weight: 600;
+    `,
+    CirceExtraBold: `
+      font-family: Circe;
+      font-weight: 800;
     `,
   },
   paddings: {
   },
+  wrappers: {
+    pc: '1300px',
+    notebook: '1170px',
+    macbook: '970px',
+    tablet: '720px',
+    mobile: '300px'
+  }
 };
 
 theme.layout = {
@@ -59,6 +66,11 @@ export const flexContainer = (justifyContent, alignItems, alignContent) => (`
 `
 );
 
+export const wrapper = (type) => (`
+  width: ${theme.wrappers[type]};
+  margin: auto;
+`);
+
 export const gradient = (gradType, gradDirection, gradStart, gradEnd) => (`
   background: ${gradType}-gradient(${gradType === 'linear' ? gradDirection+',' : ''} ${gradStart}, ${gradEnd});
 `);
@@ -73,6 +85,7 @@ export const macbook = style => respondTo('macbook', style);
 export const tablet = style => respondTo('tablet', style);
 export const mobile = style => respondTo('mobile', style);
 
+theme.wrapper = wrapper;
 theme.respondTo = respondTo;
 theme.fontSize = fontSize;
 theme.flexContainer = flexContainer;
